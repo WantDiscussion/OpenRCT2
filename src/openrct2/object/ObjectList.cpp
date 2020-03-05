@@ -89,7 +89,7 @@ void object_create_identifier_name(char* string_buffer, size_t size, const rct_o
  * bl = entry_index
  * ecx = entry_type
  */
-bool find_object_in_entry_group(const rct_object_entry* entry, uint8_t* entry_type, uint8_t* entry_index)
+bool find_object_in_entry_group(const rct_object_entry* entry, uint8_t* entry_type, uint16_t* entry_index)
 {
     int32_t objectType = entry->GetType();
     if (objectType >= OBJECT_TYPE_COUNT)
@@ -135,7 +135,7 @@ void get_type_entry_index(size_t index, uint8_t* outObjectType, uint16_t* outEnt
     if (outObjectType != nullptr)
         *outObjectType = objectType;
     if (outEntryIndex != nullptr)
-        *outEntryIndex = (uint8_t)index;
+        *outEntryIndex = (uint16_t)index;
 }
 
 const rct_object_entry* get_loaded_object_entry(size_t index)
