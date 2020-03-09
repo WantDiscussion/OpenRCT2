@@ -753,13 +753,13 @@ namespace OpenRCT2
         {
             Peep* peep{};
             uint16_t spriteIndex{};
-            uint16_t numGuestsInPark = 0;
-            uint16_t numGuestsHeadingsForPark = 0;
+            uint32_t numGuestsInPark = 0;
+            uint32_t numGuestsHeadingForPark = 0;
             FOR_ALL_GUESTS (spriteIndex, peep)
             {
                 if (peep->state == PEEP_STATE_ENTERING_PARK)
                 {
-                    numGuestsHeadingsForPark++;
+                    numGuestsHeadingForPark++;
                 }
                 if (!peep->outside_of_park)
                 {
@@ -768,7 +768,7 @@ namespace OpenRCT2
             }
 
             gNumGuestsInPark = numGuestsInPark;
-            gNumGuestsHeadingForPark = numGuestsHeadingsForPark;
+            gNumGuestsHeadingForPark = numGuestsHeadingForPark;
 
             auto& park = GetContext()->GetGameState()->GetPark();
             gParkSize = park.CalculateParkSize();
