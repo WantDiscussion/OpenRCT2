@@ -197,7 +197,9 @@ rct_sprite* get_sprite(size_t sprite_idx);
 
 extern uint16_t gSpriteListHead[SPRITE_LIST_COUNT];
 extern uint16_t gSpriteListCount[SPRITE_LIST_COUNT];
-extern uint16_t gSpriteSpatialIndex[0x10001];
+constexpr const uint32_t SPATIAL_INDEX_SIZE = (MAXIMUM_MAP_SIZE_TECHNICAL * MAXIMUM_MAP_SIZE_TECHNICAL) + 1;
+constexpr const uint32_t SPATIAL_INDEX_LOCATION_NULL = SPATIAL_INDEX_SIZE - 1;
+extern uint16_t gSpriteSpatialIndex[SPATIAL_INDEX_SIZE];
 
 extern const rct_string_id litterNames[12];
 
