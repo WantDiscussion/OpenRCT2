@@ -464,8 +464,23 @@ static void window_editor_object_selection_mouseup(rct_window* w, rct_widgetinde
         case WIDX_CLOSE:
             if (gScreenFlags & SCREEN_FLAGS_EDITOR)
             {
-                auto loadOrQuitAction = LoadOrQuitAction(LoadOrQuitModes::OpenSavePrompt, PM_SAVE_BEFORE_QUIT);
-                GameActions::Execute(&loadOrQuitAction);
+                window_close_all();
+                if (gScreenFlags & SCREEN_FLAGS_TRACK_DESIGNER)
+                {
+                    set_every_ride_type_invented();
+                    set_every_ride_entry_invented();
+                    context_open_window(WC_CONSTRUCT_RIDE);
+                    gS6Info.editor_step = EDITOR_STEP_ROLLERCOASTER_DESIGNER;
+                    gfx_invalidate_screen();
+                }
+                else
+                {
+                    set_all_scenery_items_invented();
+                    scenery_set_default_placement_configuration();
+                    gS6Info.editor_step = EDITOR_STEP_LANDSCAPE_EDITOR;
+                    context_open_window(WC_MAP);
+                    gfx_invalidate_screen();
+                }
             }
             else
             {
