@@ -97,11 +97,26 @@ enum
     CREATE_CROSSING_MODE_PATH_OVER_TRACK,
 };
 
+// Used to label the order that the map wide path flags update.
+// Format is WIDE_GROUP_<Start tile>_<Primary Update Direction>
+enum
+{
+    WIDE_GROUP_N_SW,
+    WIDE_GROUP_N_SE,
+    WIDE_GROUP_E_NW,
+    WIDE_GROUP_E_SW,
+    WIDE_GROUP_S_NE,
+    WIDE_GROUP_S_NW,
+    WIDE_GROUP_W_SE,
+    WIDE_GROUP_W_NE,
+};
+
 extern const std::array<CoordsXY, 8> CoordsDirectionDelta;
 extern const TileCoordsXY TileDirectionDelta[];
 
 extern uint16_t gWidePathTileLoopX;
 extern uint16_t gWidePathTileLoopY;
+
 extern uint16_t gGrassSceneryTileLoopPosition;
 
 extern int16_t gMapSizeUnits;
@@ -171,6 +186,7 @@ bool map_coord_is_connected(const TileCoordsXYZ& loc, uint8_t faceDirection);
 void map_remove_provisional_elements();
 void map_restore_provisional_elements();
 void map_update_path_wide_flags();
+void map_update_all_path_wide_flags();
 bool map_is_location_valid(const CoordsXY& coords);
 bool map_is_edge(const CoordsXY& coords);
 bool map_can_build_at(const CoordsXYZ& loc);

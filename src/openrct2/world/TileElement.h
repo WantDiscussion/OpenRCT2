@@ -199,15 +199,17 @@ private:
     uint8_t Edges;          // 8
     uint8_t Flags2;         // 9
     uint8_t SlopeDirection; // 10
+
     union
     {
         uint8_t AdditionStatus; // 11, only used for litter bins
         ride_id_t rideIndex;    // 11
     };
     ::StationIndex StationIndex; // 13
+    uint8_t WideFlags;           // 14
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-private-field"
-    uint8_t pad_0E[2];
+    uint8_t pad_0E[1];
 #pragma clang diagnostic pop
 
 public:
@@ -235,7 +237,11 @@ public:
     void SetStationIndex(::StationIndex newStationIndex);
 
     bool IsWide() const;
+    bool IsWideForGroup(uint8_t wideGroup) const;
+    uint8_t GetWideFlags() const;
+    void SetWideFlags(uint8_t flags);
     void SetWide(bool isWide);
+    void SetWideForGroup(uint8_t wideGroup, bool isWide);
 
     bool IsQueue() const;
     void SetIsQueue(bool isQueue);

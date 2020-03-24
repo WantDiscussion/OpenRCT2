@@ -3909,6 +3909,11 @@ enum
     STR_ENABLE_LIGHTING_VEHICLES = 6361,
     STR_ENABLE_LIGHTING_VEHICLES_TIP = 6362,
 
+    STR_SHOW_WIDE_PATH_NONE = 6363,
+    STR_SHOW_WIDE_PATH_ANY = 6364,
+    STR_SHOW_WIDE_PATH_ALL = 6365,
+    STR_SHOW_WIDE_PATH_GROUP = 6366,
+
     // Have to include resource strings (from scenarios and objects) for the time being now that language is partially working
     STR_COUNT = 32768
 };
